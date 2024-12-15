@@ -25,7 +25,7 @@ exports.signIn = (req, res) => {
     res.status(406).json({ message: "All fields are required" })
   }
   res.status(200).send({
-    token: 'weldat', email: 'weldat@gmail.com', _id: '1234', balance: 50,
+    token: 'weldat', email: 'weldat@gmail.com', _id: '1234',
     first_name: 'weldat', phone: '7853335074', last_name: 'emb', role: 'admin'
   });
 };

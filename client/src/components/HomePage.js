@@ -11,7 +11,7 @@ const signUpLinkStyle = {
   cursor: 'pointer',
 };
 
-const HomePage = ({authHandler}) => {
+const HomePage = () => {
 
   const [isSignedUp, setIsSignedUp] = useState(false);
   const { userDetails } = useAuth()
@@ -25,7 +25,6 @@ const HomePage = ({authHandler}) => {
   };
 
   const handleSubmit = (formData) => {
-    authHandler(formData);
     userDetails(formData)
 };
 

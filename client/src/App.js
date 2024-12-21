@@ -17,8 +17,6 @@ import { useAuth } from './hooks/AuthContext';
 const App = () => {
   const { logout, user } = useAuth(); 
 
-console.log(user, 'userr')
-
   const handleLogout = () => {
     logout();
   };

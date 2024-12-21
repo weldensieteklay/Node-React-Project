@@ -15,17 +15,10 @@ import HomePage from './components/HomePage';
 import { useAuth } from './hooks/AuthContext';
 
 const App = () => {
-  const [state, setState] = useState({});
-  const { logout } = useAuth(); 
-
-
+  const { logout, user } = useAuth(); 
 
   const handleLogout = () => {
     logout();
-  };
-
-  const authHandler = (data) => {
-    setState((prev) => ({ ...prev, ...data }));
   };
 
 
@@ -59,7 +52,7 @@ const App = () => {
                   <HomeIcon style={{ cursor: 'pointer', color: 'white' }} />
                 </a>
               </Box>
-              {state?.token && (
+              {user?.token && (
                 <>
                   <Box
                     style={{
@@ -69,7 +62,7 @@ const App = () => {
                     }}
                   >
                     <Profile
-                      fullName={state.first_name + ' ' + state.last_name}
+                      fullName={user.first_name + ' ' + user.last_name}
                       onLogout={handleLogout}
                     />
                   </Box>
@@ -77,9 +70,9 @@ const App = () => {
               )}
             </Toolbar>
           </AppBar>
-          {!state?.token ? (
+          {!user?.token ? (
             <Box style={{ flex: 1, overflow: 'auto' }}>
-              <HomePage authHandler={authHandler} />
+              <HomePage />
             </Box>
           ) : (
             <Box style={{ flex: 1, overflow: 'auto' }} />

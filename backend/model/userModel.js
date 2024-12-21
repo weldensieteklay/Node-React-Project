@@ -24,8 +24,8 @@ const userSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    admin: {
-      type: Boolean,
+    role: {
+      type: String,
       required: true,
     },
   },
@@ -33,15 +33,6 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-
-// Hash password before saving
-userSchema.pre("save", async (next) => {
-  if (!this.isModified("password")) {
-    next();
-  }
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-});
 
 const User = mongoose.model("User", userSchema);
 

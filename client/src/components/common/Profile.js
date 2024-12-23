@@ -5,7 +5,7 @@ import ConfirmationModal from './ConfirmationModal';
 
 const Profile = ({ fullName, onLogout }) => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [logoutConfirmationOpen, setLogoutConfirmationOpen] = useState();
+  const [logoutConfirmationOpen, setLogoutConfirmationOpen] = useState(false);
   const [profileModalOpen, setProfileModalOpen] = useState(false);
 
   const handleMenuClose = () => {

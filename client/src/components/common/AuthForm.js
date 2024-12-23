@@ -19,7 +19,7 @@ const AuthForm = ({ modeConfig, handleSubmitProp }) => {
     const [formData, setFormData] = useState({});
 
     const handleInputChange = (name, value) => {
-        if(name==='phone')value= '+' + value
+        if(name=='phone')value= '+' + value
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,

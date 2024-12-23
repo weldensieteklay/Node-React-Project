@@ -18,6 +18,7 @@ const Menu = ({ data, open, onClose }) => {
   };
 
   const groupedRoutes = routesConfig.reduce((acc, route) => {
+    
     const groupName =
       route.group[0].charAt(0).toUpperCase() +
       route.group[0].slice(1).toLowerCase();

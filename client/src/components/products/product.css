@@ -1,0 +1,48 @@
+.additem{
+  background-color:rgb(203, 166, 238);
+  border: 2px;
+  border-radius: 20px;
+  text-align: center;
+  margin: auto;
+  margin-top: 25px;
+  padding: 15px;
+  width: 30%;
+  display: block;
+
+  
+}
+
+.image{
+  background-color: black;
+  text-align: center;
+  border-radius: 15px;
+  height: 150px;
+  width: 150px;
+}
+
+.listItems{
+  list-style-type: none;
+  align-items: left;
+  display: flex;
+
+ flex-wrap: wrap;
+ height: 300px;
+ justify-content: space-around;
+
+}
+
+.product{
+  text-align: center;
+  margin: 20px;
+  padding: 10px;
+border-radius: 12%;
+min-width:  200px;
+
+background-color: bisque;
+
+justify-content: space-around;
+
+}
+
+  
+ 

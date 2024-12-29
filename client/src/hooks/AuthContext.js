@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
-
+import React, { createContext, useContext, useState } from "react";
+// import { useNavigate } from "react-router-dom";
 const AuthContext = createContext();
 
 export const useAuth = () => {
@@ -8,6 +8,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  // const navigate = useNavigate();
 
   const userDetails = (user) => {
     setUser(user);
@@ -15,9 +16,8 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser({});
+    // navigate("/Home-page");
   };
-
-
 
   const contextValue = {
     user,
@@ -26,8 +26,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={contextValue}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 };

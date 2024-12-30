@@ -1,8 +1,8 @@
 import './product.css'
 import { currencyFormater } from '../Utle/Formating';
-import image from '../../Images/image_1734478409409.jpg'
-const Product=({product})=>{
+import image from '../../Images/image_1734478409409.jpg';
 
+const Product=({product})=>{
 
  return <>
 
@@ -11,11 +11,11 @@ const Product=({product})=>{
         
 <img className='image' src={image}  alt={product.name}/>
 
-        
+      
 <h2>{currencyFormater.format(product.price)}</h2>
 
+<button>ADD TO CART</button>
    </li>
-      
     </>
 
 

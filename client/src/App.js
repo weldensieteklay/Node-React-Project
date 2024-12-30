@@ -56,6 +56,7 @@ const App = () => {
                 <a href="/">
                   <HomeIcon style={{ cursor: 'pointer', color: 'white' }} />
                 </a>
+
                 {user?.token && (
                        <MenuIcon 
                           onClick={toggleMenu}
@@ -63,6 +64,7 @@ const App = () => {
                         />
                   
                 )}
+
               </Box>
               {user?.token && (
                 <>

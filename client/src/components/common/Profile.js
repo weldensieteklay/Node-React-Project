@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Avatar, Typography, Box, Menu, MenuItem, Modal } from '@mui/material';
 import ConfirmationModal from './ConfirmationModal';
 
+
 const Profile = ({ fullName, onLogout }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [logoutConfirmationOpen, setLogoutConfirmationOpen] = useState(false);

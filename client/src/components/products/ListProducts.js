@@ -53,11 +53,26 @@ const data = [
     "__v": 0
 }
 ]
-const ListProducts= ()=>{
+const ListProducts= ({setCart})=>{
 
   const [products, setProducts]=useState(data)
  
-   
+     // Function to add product to cart
+  const addToCart = (product) => {
+    setCart((prev) => {
+      const existingProduct = prev.find((item) => item._id === product._id);
+      if (existingProduct) {
+        // If product already in cart, update quantity
+        return prev.map((item) =>
+          item._id === product._id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      //To add new product to cart
+      return [...prev, { ...product, quantity: 1 }];
+    });
+  };
 
        
 
@@ -66,7 +81,8 @@ const ListProducts= ()=>{
    <ul className='listItems'>
     
        {products.length>0 && products.map((product)=><Product  key={product._id} product={product} 
-       
+       addToCart={()=>addToCart(product)}
+     
        />)}
      
        

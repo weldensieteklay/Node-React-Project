@@ -5,6 +5,7 @@ import {
   Toolbar,
   Typography,
   Box,
+  Button,
   // ThemeProvider,
 } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
@@ -14,11 +15,15 @@ import HomePage from './components/HomePage';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useAuth } from './hooks/AuthContext';
 import Menu from './routes/Menu';
+import { FaShoppingCart } from 'react-icons/fa';
 import ListProducts from './components/products/ListProducts'
+import Cart from './components/products/Cart';
+
 const App = () => {
   const { logout, user } = useAuth(); 
   const [menuOpen , setMenuOpen] = useState(false)
-
+  const [cart, setCart] = useState([]);
+  const [cartOpen, setCartOpen] = useState(false)
   const handleLogout = () => {
     logout();
   };
@@ -26,6 +31,10 @@ const App = () => {
   const toggleMenu = ()=>{
      setMenuOpen(!menuOpen)
   }
+
+const toggleCart = ()=>{
+  setCartOpen(!cartOpen)
+}
 
 
   return (
@@ -66,6 +75,15 @@ const App = () => {
               </Box>
               {user?.token && (
                 <>
+                <Box>
+                  <Button onClick={toggleCart} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+                   <FaShoppingCart size={30} color='white'/>
+                   <span style={{ marginLeft: '4px', color: 'white' }}>
+                    ({cart.reduce((total, item)=> total + item.quantity, 0)})
+                   </span>
+
+                  </Button>
+                </Box>
                   <Box
                     style={{
                       cursor: 'pointer',
@@ -89,9 +107,13 @@ const App = () => {
             <Box style={{ flex: 1, overflow: 'auto' }}>
               <HomePage />
             </Box>
+          ): cartOpen ? (
+            <Box style ={{flex: 1, overflow: 'auto'}}>
+             <Cart cart={cart}/>
+            </Box>
           ) : (
             <Box style={{ flex: 1, overflow: 'auto' }} >
-              <ListProducts/>
+              <ListProducts cart={cart} setCart={setCart}/>
               </Box>
               
           )}

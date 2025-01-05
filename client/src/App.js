@@ -16,14 +16,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useAuth } from './hooks/AuthContext';
 import Menu from './routes/Menu';
 import { FaShoppingCart } from 'react-icons/fa';
-import ListProducts from './components/products/ListProducts'
-import Cart from './components/products/Cart';
+// import CartItems from './components/cart/CartItems';
+import ProductHomePage from './components/products/ProductHomePage';
+// import { useNavigate } from 'react-router-dom';
 
 const App = () => {
   const { logout, user } = useAuth(); 
   const [menuOpen , setMenuOpen] = useState(false)
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false)
+  // const navigate = useNavigate();
   const handleLogout = () => {
     logout();
   };
@@ -32,10 +34,10 @@ const App = () => {
      setMenuOpen(!menuOpen)
   }
 
-const toggleCart = ()=>{
-  setCartOpen(!cartOpen)
-}
-
+// const toggleCart = ()=>{
+//   navigate('/cart')
+// }
+ 
 
   return (
  
@@ -76,10 +78,9 @@ const toggleCart = ()=>{
               {user?.token && (
                 <>
                 <Box>
-                  <Button onClick={toggleCart} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+                  <Button style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
                    <FaShoppingCart size={30} color='white'/>
                    <span style={{ marginLeft: '4px', color: 'white' }}>
-                    ({cart.reduce((total, item)=> total + item.quantity, 0)})
                    </span>
 
                   </Button>
@@ -107,13 +108,9 @@ const toggleCart = ()=>{
             <Box style={{ flex: 1, overflow: 'auto' }}>
               <HomePage />
             </Box>
-          ): cartOpen ? (
-            <Box style ={{flex: 1, overflow: 'auto'}}>
-             <Cart cart={cart}/>
-            </Box>
           ) : (
             <Box style={{ flex: 1, overflow: 'auto' }} >
-              <ListProducts cart={cart} setCart={setCart}/>
+            <ProductHomePage/>
               </Box>
               
           )}

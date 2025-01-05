@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 // PGil1D8LN64KARDd
+
+
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(
-      "mongodb+srv://yirgalemtekie825:PGil1D8LN64KARDd@cluster0.pt0zp.mongodb.net/shopping-project?retryWrites=true&w=majority",
+      "mongodb://localhost:27017/shopping-project",
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,

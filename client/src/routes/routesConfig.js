@@ -1,32 +1,22 @@
 
-import Profile from '../components/common/Profile';
-
+import CartItems from '../components/cart/CartItems';
+import ListProducts from '../components/products/ListProducts';
+// import CartItems from '../components/cart/CartItems';
 const routesConfig = [
  
     {
-        path: '/profile',
-        component: Profile,
-        label: 'Profile',
-        group: ['authentication']
+        path: '/product',
+        component: ListProducts,
+        label: 'Product',
+        group: ['ListProducts']
     },
     {
-        path: '/profile',
-        component: Profile,
-        label: 'Profile',
-        group: ['authentication']
+        path: '/cart',
+        component: CartItems,
+        label: 'Cart',
+        group: ['ListProducts']
     },
-    {
-        path: '/profile',
-        component: Profile,
-        label: 'Profile',
-        group: ['Items']
-    },
-    {
-        path: '/profile',
-        component: Profile,
-        label: 'Profile',
-        group: ['Products']
-    },
+ 
 ];
 
 export default routesConfig;

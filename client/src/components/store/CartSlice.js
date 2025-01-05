@@ -31,5 +31,5 @@ const CartSlice=createSlice({
     }
 })
 
-const cartActions=CartSlice.actions;
+export const cartActions=CartSlice.actions;
 export default CartSlice;

@@ -18,6 +18,7 @@ import Menu from './routes/Menu';
 import { FaShoppingCart } from 'react-icons/fa';
 // import CartItems from './components/cart/CartItems';
 import ProductHomePage from './components/products/ProductHomePage';
+import CartMenu from './components/cart/CartMenu';
 // import { useNavigate } from 'react-router-dom';
 
 const App = () => {
@@ -77,21 +78,18 @@ const App = () => {
               </Box>
               {user?.token && (
                 <>
-                <Box>
-                  <Button style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
-                   <FaShoppingCart size={30} color='white'/>
-                   <span style={{ marginLeft: '4px', color: 'white' }}>
-                   </span>
-
-                  </Button>
-                </Box>
+              
+                  
+              
                   <Box
+                  
                     style={{
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
                     }}
                   >
+                    <CartMenu/>
                     <Profile
                       fullName={user.first_name + ' ' + user.last_name}
                       onLogout={handleLogout}
@@ -110,7 +108,7 @@ const App = () => {
             </Box>
           ) : (
             <Box style={{ flex: 1, overflow: 'auto' }} >
-            <ProductHomePage/>
+            {/* <ProductHomePage/> */}
               </Box>
               
           )}

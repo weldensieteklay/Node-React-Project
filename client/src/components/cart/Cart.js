@@ -1,4 +1,5 @@
 import CartItems from "./CartItems";
+import { useSelector} from 'react-redux';
 const Cart = ()=>{
 
     return (
@@ -9,3 +10,5 @@ const Cart = ()=>{
 }
 
 export default Cart;
+
+

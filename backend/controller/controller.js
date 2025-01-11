@@ -1,8 +1,6 @@
-
 const User = require('../model/userModel')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const ObjectId = require('mongodb').ObjectID;
 
 //Sign up
 exports.signUp = async (req, res, next) => {
@@ -50,21 +48,48 @@ exports.signUp = async (req, res, next) => {
 
 
 
-//User logn in
-exports.signIn = (req, res) => {
-
-  const { email, password } = req.body;
-
-  //simple validation
-  if (!email || !password) {
-    res.status(406).json({ message: "All fields are required" })
-  }
-  res.status(200).send({
-    token: 'weldat', email: 'weldat@gmail.com', _id: '1234',
-    first_name: 'weldat', phone: '7853335074', last_name: 'emb', role: 'admin'
-  });
-};
+exports.signIn = (req, res, next) => {
 
 
+    const { email, password } = req.body;
+  
+    //simple validation
+    if (!email || !password) {
+        res.status(406).json({ msg: "All fields are required" })
+    }
+  
+    User.findOne({ email: email })
+        .then(user => {
+  
+             if (user) {
+                 
+                bcrypt.compare(password, user.password)
+                    .then(isMatch => {
+                        if (isMatch) {
+                            const token = jwt.sign({ email: user.email, id: user._id, 
+                                fname: user.fname, lname: user.lname, role: user.role }, process.env.jwtSecret);
+                            res.json({ token, email: user.email, id: user._id, 
+                                fname: user.fname, lname: user.lname, role: user.role });
+                        } else {
+  
+                            res.status(408).send({ msg: "Password doesn't match" });
+                        }
+                    });
+            } else {
+                res.status(403).send({ msg: "User doesn't exist" });
+            }
+        }).catch(err => {
+            res.json({ msg: err });
+          });
+        };
+  
 
 
+
+
+
+
+
+
+
+     

@@ -14,7 +14,6 @@ import HomePage from './components/HomePage';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useAuth } from './hooks/AuthContext';
 import Menu from './routes/Menu';
-import ListProducts from './components/products/ListProducts'
 const App = () => {
   const { logout, user } = useAuth(); 
   const [menuOpen , setMenuOpen] = useState(false)
@@ -91,7 +90,6 @@ const App = () => {
             </Box>
           ) : (
             <Box style={{ flex: 1, overflow: 'auto' }} >
-              <ListProducts/>
               </Box>
               
           )}

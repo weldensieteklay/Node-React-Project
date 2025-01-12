@@ -3,13 +3,10 @@ import axios from "axios";
 import { useState } from "react";
 
 const AddProducts = ()=>{
-    const [state, setState] = useState({name: '', price: null})
+    const [state, setState] = useState({name: '', price: null, quantity: null})
 
     const submit = ()=>{
-    const newState= {...state, price: parseInt(state.price)}
-      axios.post('http://localhost:6000/product', newState)
-      .then(res=>{
-        alert(res.data.message)})
+    console.log("product added")
     }
     const inputHandler = (event)=>{
        const {name, value} = event.target
@@ -20,7 +17,9 @@ const AddProducts = ()=>{
             <h1 style={{textAlign:"center",backgroundColor:"Gray"}}>Add Product</h1>
             <TextField type="text" name="name"  value={state.name} onChange={inputHandler} placeholder="Product Name" style={{width:"50%",margin:"10px"}}></TextField>
             <TextField type="number" name="price"  value={state.price} onChange={inputHandler} placeholder="Product Price" style={{width:"50%",margin:"4px"}}></TextField>
-            <Button onClick={submit}>Add Product</Button>
+            <TextField type="number" name="price"  value={state.quantity} onChange={inputHandler} placeholder="Product Quantity" style={{width:"50%",margin:"4px"}}></TextField>
+
+            <Button onClick={submit} variant="contained" sx={{ width: '230px', marginTop: 2 }}>Add Product</Button>
         </Box>
     )
 }

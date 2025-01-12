@@ -1,32 +1,21 @@
 
-import Profile from '../components/common/Profile';
-
+import ListProducts from '../components/products/ListProducts';
+import AddProducts from '../components/products/AddProducts';
 const routesConfig = [
  
     {
-        path: '/profile',
-        component: Profile,
-        label: 'Profile',
-        group: ['authentication']
-    },
-    {
-        path: '/profile',
-        component: Profile,
-        label: 'Profile',
-        group: ['authentication']
-    },
-    {
-        path: '/profile',
-        component: Profile,
-        label: 'Profile',
-        group: ['Items']
-    },
-    {
-        path: '/profile',
-        component: Profile,
-        label: 'Profile',
+        path: '/add-product',
+        component: AddProducts,
+        label: 'Add Product',
         group: ['Products']
     },
+    {
+        path: '/list-products',
+        component: ListProducts,
+        label: 'List of Products',
+        group: ['Products']
+    },
+   
 ];
 
 export default routesConfig;
